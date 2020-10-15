@@ -24,6 +24,7 @@ export class Register extends React.Component {
 
   handleSubmit = (event) => {
     // alert('A form was submitted: ' + this.state.username);
+    
 
     fetch('http://localhost:8000/core/register', {
         method: 'POST',
