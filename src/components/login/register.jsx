@@ -7,7 +7,8 @@ export class Register extends React.Component {
     this.state = {
       username : "",
       email: "",
-      password: ""
+      password: "",
+      userrole: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -61,6 +62,14 @@ export class Register extends React.Component {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="userrole">User Role</label>
+              <select name="userrole" placeholder="User Role" value={this.state.userrole} onChange={this.handleInputChange}>
+                <option value="manager">Manager</option>
+                <option value="client">Client</option>
+                <option value="teammember">Team Member</option>
+              </select>
             </div>
           </div>
         </div>
