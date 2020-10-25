@@ -56,15 +56,15 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleInputChange} />
+              <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange}/>
+              <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
+              <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="userrole">User Role</label>

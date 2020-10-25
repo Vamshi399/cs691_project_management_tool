@@ -22,8 +22,8 @@
     }
 
     .form {
-      margin-top: 2em;
-      display: flex;
+      // margin-top: 2em;
+      // display: flex;
       flex-direction: column;
       align-items: center;
 
@@ -35,7 +35,7 @@
         label {
           font-size: 20px;
         }
-        input {
+        input, select {
           margin-top: 6px;
           min-width: 18em;
           height: 37px;
@@ -51,7 +51,6 @@
             //background-color: #ffffff;
             //box-shadow: 0px 0px 14px 0.3px #0e81ce96;
           }
-
           &:focus {
             outline: none;
             box-shadow: 0px 0px 12px 0.8px #3474dbb2;
