@@ -8,7 +8,8 @@ export class Login extends React.Component {
     super(props);
     this.state = {
       username : "",
-      password: ""
+      password: "",
+
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -25,19 +26,37 @@ export class Login extends React.Component {
 
   handleSubmit = (event) => {
     // alert('A form was submitted: ' + this.state.username); https://testapi.io/api/vamshi399/login
-    
-    fetch('http://localhost:8000/core/login', {
+
+    fetch('http://localhost:8000/token-auth/', {
         method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
         // We convert the React state to JSON and send it as the POST body
         body: JSON.stringify(this.state)
-      }).then(response => response.json()).then(function(data){
-        console.log(data)
-        if(data.status=="success"){
+      }).then(function(response) {
+      console.log(response)
+      if(response.ok){
+        console.log("its logged in")
+        if(response.status=="200"){
+          console.log("its success")
           // this.props.history.push('/dashboard.jsx')
-          
+
         }
-        return data;
-      });
+        // <Redirect to="/dashboard.jsx"/>;
+      }
+
+      return response.json();
+    }).then(function(data){
+      console.log(data)
+      if(data.status=="200"){
+
+        // this.props.history.push('/dashboard.jsx')
+
+      }
+      return data;
+    });
 
     event.preventDefault();
 }
@@ -55,6 +74,7 @@ export class Login extends React.Component {
               <label htmlFor="username">Username</label>
               <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleInputChange} />
             </div>
+
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
