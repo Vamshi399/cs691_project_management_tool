@@ -5,10 +5,8 @@ export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        username : "",
-        password: "",
-      }
+      username : "",
+      password: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -19,18 +17,14 @@ export class Login extends React.Component {
     const name = target.name;
     if(name==="username"){
       this.setState((state) => ({
-        user: {
-          username: value,
-          password: state.user.password
-        }
+        username: value,
+        password: state.password
       }))
     }
     if(name==="password"){
       this.setState((state) => ({
-        user: {
-          username: state.user.username,
-          password: value
-        }
+        username: state.username,
+        password: value
       }))
     }
   }
@@ -83,12 +77,12 @@ export class Login extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" value={this.state.user.username} onChange={this.handleInputChange} />
+              <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} />
             </div>
 
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" value={this.state.user.password} onChange={this.handleInputChange}/>
+              <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange}/>
             </div>
           </div>
         </div>
