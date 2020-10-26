@@ -10,9 +10,7 @@ export class Register extends React.Component {
         password: "",
         email:"",
       },
-      roles: {
-        role: "manager"
-      }
+      roles: "manager"
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -29,9 +27,7 @@ export class Register extends React.Component {
           email: state.user.email,
           password: state.user.password
         },
-        roles: {
-          role: state.roles.role
-        }
+        roles: state.roles
       }))
     }
     if(name==="email"){
@@ -41,9 +37,7 @@ export class Register extends React.Component {
           email: value,
           password: state.user.password
         },
-        roles: {
-          role: state.roles.role
-        }
+        roles: state.roles
       }))
     }
     if(name==="password"){
@@ -53,21 +47,17 @@ export class Register extends React.Component {
           email: state.user.email,
           password: value
         },
-        roles: {
-          role: state.roles.role
-        }
+        roles: state.roles
       }))
     }
-    if(name==="role"){
+    if(name==="roles"){
       this.setState((state) => ({
         user: {
           username: state.user.username,
           email: state.user.email,
           password: state.user.password
         },
-        roles: {
-          role: value
-        }
+        roles: state.roles
       }))
     }
   }
@@ -117,7 +107,7 @@ export class Register extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="userrole">User Role</label>
-              <select name="role" placeholder="User Role" value={this.state.roles.role} onChange={this.handleInputChange}>
+              <select name="roles" placeholder="User Role" value={this.state.roles} onChange={this.handleInputChange}>
                 <option value="manager">Manager</option>
                 <option value="client">Client</option>
                 <option value="teammember">Team Member</option>
