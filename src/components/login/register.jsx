@@ -5,12 +5,12 @@ export class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user : {
-        username: "",
-        email: "",
-        password: ""
+      user: {
+        username : "",
+        password: "",
+        email:"",
       },
-      userrole: {
+      roles: {
         role: "manager"
       }
     }
@@ -29,8 +29,8 @@ export class Register extends React.Component {
           email: state.user.email,
           password: state.user.password
         },
-        userrole: {
-          role: state.userrole.role
+        roles: {
+          role: state.roles.role
         }
       }))
     }
@@ -41,8 +41,8 @@ export class Register extends React.Component {
           email: value,
           password: state.user.password
         },
-        userrole: {
-          role: state.userrole.role
+        roles: {
+          role: state.roles.role
         }
       }))
     }
@@ -53,19 +53,19 @@ export class Register extends React.Component {
           email: state.user.email,
           password: value
         },
-        userrole: {
-          role: state.userrole.role
+        roles: {
+          role: state.roles.role
         }
       }))
     }
-    if(name==="userrole"){
+    if(name==="role"){
       this.setState((state) => ({
         user: {
           username: state.user.username,
           email: state.user.email,
           password: state.user.password
         },
-        userrole: {
+        roles: {
           role: value
         }
       }))
@@ -74,15 +74,18 @@ export class Register extends React.Component {
 
   handleSubmit = (event) => {
     // alert('A form was submitted: ' + this.state.username);
-    
-
-    fetch('http://localhost:8000/core/register', {
+    console.log(JSON.stringify(this.state));
+    fetch('http://localhost:8000/accounts/api/users/', {
         method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
         // We convert the React state to JSON and send it as the POST body
         body: JSON.stringify(this.state)
       }).then(function(response) {
         console.log(response)
-        if(response.ok){
+        if(response.status=="200"){
           // <Redirect to="/dashboard.jsx"/>;
         }
         return response.json();
@@ -114,7 +117,7 @@ export class Register extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="userrole">User Role</label>
-              <select name="userrole" placeholder="User Role" value={this.state.userrole.role} onChange={this.handleInputChange}>
+              <select name="role" placeholder="User Role" value={this.state.roles.role} onChange={this.handleInputChange}>
                 <option value="manager">Manager</option>
                 <option value="client">Client</option>
                 <option value="teammember">Team Member</option>
