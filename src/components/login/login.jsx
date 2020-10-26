@@ -7,8 +7,10 @@ export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : "",
-      password: ""
+      user : {
+        username: "",
+        password: ""
+      }
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -17,10 +19,22 @@ export class Login extends React.Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
+    if(name==="username"){
+      this.setState((state) => ({
+        user: {
+          username: value,
+          password: state.user.password
+        }
+      }))
+    }
+    if(name==="password"){
+      this.setState((state) => ({
+        user: {
+          username: state.user.username,
+          password: value
+        }
+      }))
+    }
   }
 
   handleSubmit = (event) => {
@@ -32,7 +46,7 @@ export class Login extends React.Component {
         body: JSON.stringify(this.state)
       }).then(response => response.json()).then(function(data){
         console.log(data)
-        if(data.status=="success"){
+        if(data.status==="success"){
           // this.props.history.push('/dashboard.jsx')
           
         }
@@ -53,11 +67,11 @@ export class Login extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} />
+              <input type="text" name="username" placeholder="Username" value={this.state.user.username} onChange={this.handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange}/>
+              <input type="password" name="password" placeholder="Password" value={this.state.user.password} onChange={this.handleInputChange}/>
             </div>
           </div>
         </div>

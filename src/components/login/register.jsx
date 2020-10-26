@@ -5,10 +5,14 @@ export class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : "",
-      email: "",
-      password: "",
-      userrole: "manager"
+      user : {
+        username: "",
+        email: "",
+        password: ""
+      },
+      userrole: {
+        role: "manager"
+      }
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -18,9 +22,54 @@ export class Register extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
+    if(name==="username"){
+      this.setState((state) => ({
+        user: {
+          username: value,
+          email: state.user.email,
+          password: state.user.password
+        },
+        userrole: {
+          role: state.userrole.role
+        }
+      }))
+    }
+    if(name==="email"){
+      this.setState((state) => ({
+        user: {
+          username: state.user.username,
+          email: value,
+          password: state.user.password
+        },
+        userrole: {
+          role: state.userrole.role
+        }
+      }))
+    }
+    if(name==="password"){
+      this.setState((state) => ({
+        user: {
+          username: state.user.username,
+          email: state.user.email,
+          password: value
+        },
+        userrole: {
+          role: state.userrole.role
+        }
+      }))
+    }
+    if(name==="userrole"){
+      this.setState((state) => ({
+        user: {
+          username: state.user.username,
+          email: state.user.email,
+          password: state.user.password
+        },
+        userrole: {
+          role: value
+        }
+      }))
+    }
   }
 
   handleSubmit = (event) => {
@@ -53,19 +102,19 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} />
+              <input type="text" name="username" placeholder="Username" value={this.state.user.username} onChange={this.handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange}/>
+              <input type="email" name="email" placeholder="Email" value={this.state.user.email} onChange={this.handleInputChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange}/>
+              <input type="password" name="password" placeholder="Password" value={this.state.user.password} onChange={this.handleInputChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="userrole">User Role</label>
-              <select name="userrole" placeholder="User Role" value={this.state.userrole} onChange={this.handleInputChange}>
+              <select name="userrole" placeholder="User Role" value={this.state.userrole.role} onChange={this.handleInputChange}>
                 <option value="manager">Manager</option>
                 <option value="client">Client</option>
                 <option value="teammember">Team Member</option>
