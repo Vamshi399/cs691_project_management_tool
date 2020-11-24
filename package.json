@@ -1,14 +1,33 @@
 {
-  "name": "login-register-react",
+  "name": "dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@material/top-app-bar": "^8.0.0",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
+    "@testing-library/user-event": "^12.2.0",
+    "bootstrap": "^4.5.3",
     "delay": "^4.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "jquery": "^3.5.1",
+    "js-cookie": "^2.2.1",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-calendar": "^3.2.0",
+    "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "react-modal": "^3.11.2",
+    "react-native-settings-list": "^1.8.0",
     "react-pose": "^4.0.8",
-    "react-scripts": "^3.4.3",
-    "react-spring": "^8.0.20"
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.0",
+    "react-scroll-text": "^1.0.1",
+    "react-settings-pane": "^0.1.5",
+    "react-spring": "^8.0.20",
+    "react-text-marquee": "^1.0.1",
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +36,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -32,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "node-sass": "^4.14.1"
   }
 }

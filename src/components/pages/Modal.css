@@ -1,0 +1,83 @@
+.modal-wrapper {
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    margin: -350px auto 0;
+    transition: all .5s;
+    width: 120%;
+    
+    background-image: url("https://img.wallpapersafari.com/desktop/1600/900/83/5/kmV7Md.jpg"); 
+  background-size: cover;
+  background-repeat:no-repeat;
+
+}
+
+.modal-header {
+    background : linear-gradient(to bottom right,#3ABEFF, #03045e);
+     
+    height: 60px;
+    line-height: 40px;
+    padding: 3px 20px;
+    text-align: right;
+}
+
+.modal-header h3 {
+    color: white;
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left:160px;
+}
+
+.modal-body {
+    padding: 10px 15px;
+    text-align: center;
+    height:480px;
+    margin-left:100px;
+    font-weight:bold;
+    font-size:20px;
+}
+
+
+.modal-footer {
+    background : linear-gradient(to bottom right,#3ABEFF, #03045e);
+    height: 30px;
+    padding: 15px;
+}
+
+.close-modal-btn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+    margin: 0;
+}
+
+.close-modal-btn:hover {
+    color: black;
+}
+
+input , select{
+    border:1px solid;
+}
+
+.back-drop {
+    background-color: rgba(48, 49, 48, 0.42);
+    height: 100%;
+    position: fixed;
+    transition: all 1s;
+    width: 100%;
+}
+
+.open-modal-btn {
+    margin: 15px;
+    padding: 5px;
+    font-weight: bold;
+}
+.button1{
+    background-color:#03CEA4;
+    border:2px solid;
+}
+.button1:hover {
+    background-color: #74F2CE;
+}
