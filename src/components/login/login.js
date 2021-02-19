@@ -116,6 +116,7 @@ class Login extends React.Component {
         Cookies.set('access_token', response.token);
         Cookies.set('username', response.user.username);
         //Cookies.set('refresh_token', tokens.refresh_token)
+        Cookies.set('roles', response.roles);
         console.log("User loggedin successfully");
         window.location.reload();
       }

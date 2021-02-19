@@ -22,7 +22,8 @@ class App1 extends Component {
       MName: '',
       Status: '',
       items: null,
-      projects: null
+      projects: null,
+      roles: ''
     }
     this.props = {
       Pname: '', item: []
@@ -49,6 +50,7 @@ class App1 extends Component {
     response = await fetch('http://localhost:8000/tasks/project', requestOptions);
     data = await response.json();
     this.setState({ projects: data });
+    this.state.roles = Cookies.get('roles');
   }
 
 
@@ -146,37 +148,99 @@ class App1 extends Component {
     }
 
     // const { isFetching } = this.state;
-    return (
-      <div className="App1">
-        {isFetching ? (
-          <div>Loading...</div>
-        ) : (
-            <div className="Project">
-              <ProjectTable projects={this.state.projects} ></ProjectTable>
-              <form className="add"><b>Add New Project:</b>
-                <button className="button" onClick={this.onSubmit}> <FaPlusCircle size="3em" /></button>
-              </form>
-              <div className="Project1">
-
+    console.log("vamshi");
+    var roles = Cookies.get('roles');
+    var uname = Cookies.get('username');
+    if (roles == 'client') {
+      return (
+        <div className="App1">
+          {isFetching ? (
+            <div>Loading...</div>
+          ) : (
+              <div className="Project">
+                <ProjectTable projects={this.state.projects} ></ProjectTable>
+                <form className="add"><b>Add New Project:</b>
+                  <button className="button" onClick={this.onSubmit}> <FaPlusCircle size="3em" /></button>
+                </form>
+                <div className="Project1">
+                  <Table items={this.state.items} />
+                  <button className="open-modal-btn" onClick={this.openModalHandler}>Add task</button>
+                  <Modal
+                    className="modal"
+                    show={this.state.isShowing}
+                    close={this.closeModalHandler}>
+                    <Form
+                      handleFormSubmit={this.handleFormSubmit}
+                      handleInputChange={this.handleInputChange}
+                      project={this.state.Pname}
+                      text={this.state.taskname}
+                      assignee={this.state.MName}
+                    //newStatus={ this.state.Status } 
+                    />
+                  </Modal>
+                </div>
+              </div>)}
+        </div>
+      )
+    }
+    else if(roles=='manager'){
+      return (
+        <div className="App1">
+          {isFetching ? (
+            <div>Loading...</div>
+          ) : (
+              <div className="Project">
+                <ProjectTable projects={this.state.projects} ></ProjectTable>
+                <div className="Project1">
+                  <Table items={this.state.items} />
+                  <button className="open-modal-btn" onClick={this.openModalHandler}>Add task</button>
+                  <Modal
+                    className="modal"
+                    show={this.state.isShowing}
+                    close={this.closeModalHandler}>
+                    <Form
+                      handleFormSubmit={this.handleFormSubmit}
+                      handleInputChange={this.handleInputChange}
+                      project={this.state.Pname}
+                      text={this.state.taskname}
+                      assignee={this.state.MName}
+                    //newStatus={ this.state.Status } 
+                    />
+                  </Modal>
+                </div>
+              </div>)}
+        </div>
+      )
+    }
+    else if(roles=='teammember'){
+      return (
+        <div className="App1">
+          {isFetching ? (
+            <div>Loading...</div>
+          ) : (
+              <div className="Project">
+                <div className="Project1">
                 <Table items={this.state.items} />
-                <button className="open-modal-btn" onClick={this.openModalHandler}>Add task</button>
-                <Modal
-                  className="modal"
-                  show={this.state.isShowing}
-                  close={this.closeModalHandler}>
-                  <Form
-                    handleFormSubmit={this.handleFormSubmit}
-                    handleInputChange={this.handleInputChange}
-                    project={this.state.Pname}
-                    text={this.state.taskname}
-                    assignee={this.state.MName}
-                  //newStatus={ this.state.Status } 
-                  />
-                </Modal>
-              </div>
-            </div>)}
-      </div>
-    );
+                  <Modal
+                    className="modal"
+                    show={this.state.isShowing}
+                    close={this.closeModalHandler}>
+                    <Form
+                      handleFormSubmit={this.handleFormSubmit}
+                      handleInputChange={this.handleInputChange}
+                      project={this.state.Pname}
+                      text={this.state.taskname}
+                      assignee={this.state.MName}
+                    />
+                  </Modal>
+                </div>
+              </div>)}
+        </div>
+      )
+    }
+    else{
+      return (<div></div>);
+    };
   }
 }
 

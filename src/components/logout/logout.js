@@ -32,7 +32,8 @@ class Logout extends React.Component {
     this.state.user.access_token = Cookies.get('access_token');
     //https://testapi.io/api/vamshi399/login
     //http://localhost:8000/token-auth/
-    fetch('https://testapi.io/api/Akhila/task', {
+    //https://testapi.io/api/Akhila/task
+    fetch('https://testapi.io/api/vamshi399/project', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain',
