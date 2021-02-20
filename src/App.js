@@ -58,7 +58,7 @@ class App extends React.Component {
 
   render() {
      const isUserActive = Cookies.get('access_token')!=null && Cookies.get('access_token')!=="";
-    
+     //const isUserActive = true;
     return (
       
       <div className="App">

@@ -16,6 +16,7 @@
     "react-bootstrap": "^1.4.0",
     "react-calendar": "^3.2.0",
     "react-dom": "^17.0.1",
+    "react-google-picker": "^0.1.0",
     "react-icons": "^3.11.0",
     "react-modal": "^3.11.2",
     "react-native-settings-list": "^1.8.0",
