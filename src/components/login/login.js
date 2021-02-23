@@ -100,8 +100,21 @@ class Login extends React.Component {
     this.state.user.roles = "";
     // eslint-disable-next-line react/no-direct-mutation-state
     this.state.user.email = "";
-    //https://testapi.io/api/vamshi399/login
-    //http://localhost:8000/token-auth/
+    var uname = this.state.user.username;
+    fetch('http://localhost:8000/tasks/role', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }).then(response => response.json()).then(function (response) {
+      console.log(response);
+      response.forEach(element => {
+        if(element.user.username==uname){
+          Cookies.set('roles', element.roles);
+        }
+      });
+    });
     fetch('http://localhost:8000/token-auth/', {
       method: 'POST',
       headers: {
@@ -115,8 +128,6 @@ class Login extends React.Component {
         window.isUserLoggedIn = true;
         Cookies.set('access_token', response.token);
         Cookies.set('username', response.user.username);
-        //Cookies.set('refresh_token', tokens.refresh_token)
-        Cookies.set('roles', response.roles);
         console.log("User loggedin successfully");
         window.location.reload();
       }
