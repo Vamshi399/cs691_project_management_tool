@@ -158,13 +158,8 @@ class App1 extends Component {
             <div>Loading...</div>
           ) : (
               <div className="Project">
-                <ProjectTable projects={this.state.projects} ></ProjectTable>
-                <form className="add"><b>Add New Project:</b>
-                  <button className="button" onClick={this.onSubmit}> <FaPlusCircle size="3em" /></button>
-                </form>
                 <div className="Project1">
                   <Table items={this.state.items} />
-                  <button className="open-modal-btn" onClick={this.openModalHandler}>Add task</button>
                   <Modal
                     className="modal"
                     show={this.state.isShowing}
@@ -191,6 +186,9 @@ class App1 extends Component {
           ) : (
               <div className="Project">
                 <ProjectTable projects={this.state.projects} ></ProjectTable>
+                <form className="add"><b>Add New Project:</b>
+                  <button className="button" onClick={this.onSubmit}> <FaPlusCircle size="3em" /></button>
+                </form>
                 <div className="Project1">
                   <Table items={this.state.items} />
                   <button className="open-modal-btn" onClick={this.openModalHandler}>Add task</button>
